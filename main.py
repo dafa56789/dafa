@@ -1,29 +1,4 @@
 import os
-from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
-
-TOKEN = os.getenv("BOT_TOKEN")
-
-if not TOKEN:
-    raise RuntimeError("Thiếu BOT_TOKEN trong Railway Variables")
-
-TOKEN = TOKEN.strip()
-
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Bot đã hoạt động 🚀")
-
-async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Các lệnh có sẵn:\n/start\n/help")
-
-app = ApplicationBuilder().token(TOKEN).build()
-
-app.add_handler(CommandHandler("start", start))
-app.add_handler(CommandHandler("help", help_command))
-
-print("Bot đang chạy...")
-
-app.run_polling()
-import os
 import re
 from datetime import datetime
 from telegram import Update
